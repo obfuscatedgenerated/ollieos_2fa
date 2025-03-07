@@ -1,7 +1,7 @@
 import {ANSI, NEWLINE} from "ollieos/src/term_ctl";
 import {ProgramMainData} from "ollieos/src/types"
 
-import {generate_totp, KEY_DIR} from ".";
+import {generate_totp, TOTP_DIGITS} from ".";
 
 // extract from ANSI to make code less verbose
 const {STYLE, PREFABS, FG} = ANSI;
@@ -29,6 +29,7 @@ export const now_subcommand = async (data: ProgramMainData) => {
         return 1;
     }
 
-    term.writeln(totp.toString());
+    // ensure the code is 6 digits long, zero-padded
+    term.writeln(totp.toString().padStart(TOTP_DIGITS, "0"));
     return 0;
 }
