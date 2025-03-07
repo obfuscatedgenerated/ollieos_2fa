@@ -107,8 +107,9 @@ export const generate_totp = async (key: string) => {
     return truncate_hotp(new Uint8Array(hash));
 }
 
-export const get_lifetime_remaining_seconds = (generated_at: number) => {
+export const get_lifetime_remaining_seconds = (generated_date: Date) => {
     const offset_now = Math.floor((Date.now() / 1000) + TOTP_OFFSET);
+    const generated_at = Math.floor(generated_date.getTime() / 1000);
     return TOTP_PERIOD - ((offset_now - generated_at) % TOTP_PERIOD);
 }
 

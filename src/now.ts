@@ -22,9 +22,9 @@ export const now_subcommand = async (data: ProgramMainData) => {
     const key = args[0].toUpperCase();
 
     let totp: number;
-    let generation_time: number;
+    let generation_time: Date;
     try {
-        generation_time = Date.now();
+        generation_time = new Date();
         totp = await generate_totp(key);
     } catch (e) {
         term.writeln(`${PREFABS.error}Error generating TOTP: ${e}${STYLE.reset_all}`);
