@@ -141,6 +141,7 @@ export default {
     },
     main: async (data) => {
         // TODO: safety prompt on first use
+        // TODO: optional key storage encryption key
 
         // extract from data to make code less verbose
         const {args, term} = data;
