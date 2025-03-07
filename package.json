@@ -1,6 +1,6 @@
 {
   "name": "2fa",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "TOTP codes in OllieOS. Don't use this for anything serious.",
   "main": "./src/index.ts",
   "scripts": {

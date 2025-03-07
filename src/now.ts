@@ -22,24 +22,24 @@ export const now_subcommand = async (data: ProgramMainData) => {
     const key = args[0].toUpperCase();
 
     let totp: number;
-    let generation_time: Date;
+    let generated_at: Date;
     try {
-        generation_time = new Date();
+        generated_at = new Date();
         totp = await generate_totp(key);
     } catch (e) {
         term.writeln(`${PREFABS.error}Error generating TOTP: ${e}${STYLE.reset_all}`);
         return 1;
     }
 
-    const lifetime = get_lifetime_remaining_seconds(generation_time);
+    const lifetime = get_lifetime_remaining_seconds(generated_at);
 
     // ensure the code is 6 digits long, zero-padded
     term.writeln(totp.toString().padStart(TOTP_DIGITS, "0"));
 
-    // show lifetime, if it's less than 10 seconds then show it in red
+    // show lifetime, if it's <= 10 seconds then show it in red
     const lifetime_str = `Expires in ${lifetime} seconds`;
 
-    if (lifetime < 10) {
+    if (lifetime <= 10) {
         term.writeln(`${FG.red}${lifetime_str}${STYLE.reset_all}`);
     } else {
         term.writeln(lifetime_str);
