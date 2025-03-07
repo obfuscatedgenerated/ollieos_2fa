@@ -87,6 +87,10 @@ const truncate_hotp = (hash: Uint8Array) => {
 }
 
 export const generate_totp = async (key: string) => {
+    if (key.length === 0) {
+        throw new Error("Key is empty");
+    }
+
     const hmac = await window.crypto.subtle.importKey(
         "raw",
         base32_decode(key),
@@ -142,6 +146,7 @@ export default {
     main: async (data) => {
         // TODO: safety prompt on first use
         // TODO: optional key storage encryption key
+        // TODO: option to specify number of digits, store in key file if applicable
 
         // extract from data to make code less verbose
         const {args, term} = data;
