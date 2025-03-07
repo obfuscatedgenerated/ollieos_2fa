@@ -82,9 +82,6 @@ const truncate_hotp = (hash: Uint8Array) => {
         (hash[offset + 3] & 0xff)
     );
 
-    // TODO: this is broken with certain keys?
-    // e.g. from test site I65VU7K5ZQL7WB4E gave 7775 at 00:44 07/03/2025
-
     // truncate to 6 digits
     return value % (10 ** TOTP_DIGITS);
 }
