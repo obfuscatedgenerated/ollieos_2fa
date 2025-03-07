@@ -52,7 +52,7 @@ const base32_decode = (base32: string) => {
     return new Uint8Array(buffer);
 }
 
-const get_time_64bit = () => {
+const get_time_code_64bit = () => {
     const time = Math.floor((Date.now() - TOTP_OFFSET) / 1000 / TOTP_PERIOD);
 
     // create 8 byte big endian buffer
@@ -101,10 +101,15 @@ export const generate_totp = async (key: string) => {
     const hash = await window.crypto.subtle.sign(
         "HMAC",
         hmac,
-        get_time_64bit()
+        get_time_code_64bit()
     );
 
     return truncate_hotp(new Uint8Array(hash));
+}
+
+export const get_lifetime_remaining_seconds = (generated_at: number) => {
+    const offset_now = Math.floor((Date.now() / 1000) + TOTP_OFFSET);
+    return TOTP_PERIOD - ((offset_now - generated_at) % TOTP_PERIOD);
 }
 
 export default {
