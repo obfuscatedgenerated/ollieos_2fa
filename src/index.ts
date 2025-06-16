@@ -124,20 +124,16 @@ export default {
     usage_suffix: "[-h] [subcommand] [arguments]",
     arg_descriptions: {
         "Subcommands:": {
-            "now": `Generates a code given a key once off: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} now <key>${STYLE.reset_all}`,
-            "add": `Adds a key to the storage, retreivable with the given label: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} add <label> <key>`,
+            "now": `Generates a code given a key once off: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} now${STYLE.reset_all}`,
+            "add": `Adds a key to the storage, retreivable with the given label: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} add <label>`,
             "remove": `Removes a key from the storage: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} remove <label>`,
             "get": `Generates a code given a key from the storage: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} get <label>`,
             "list": `Lists all keys in the storage: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} list [-k]`,
         },
         "Arguments:": {
             "-h": "Displays this help message.",
-            "For now:": {
-                "key": "Base32 encoded key to generate a code for. Case insensitive."
-            },
             "For add:": {
                 "label": "Label to store the key under. Should be unique. Spaces are not allowed. Case sensitive.", // TODO: support quotes, might need to modify terminal to do this but can bodge with args joining
-                "key": "Base32 encoded key to store. Case insensitive."
             },
             "For remove:": {
                 "label": "Label of the key to remove. Case sensitive."

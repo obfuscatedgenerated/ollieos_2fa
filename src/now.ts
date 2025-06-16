@@ -13,13 +13,8 @@ export const now_subcommand = async (data: ProgramMainData) => {
     // remove subcommand name
     args.shift();
 
-    if (args.length !== 1) {
-        term.writeln(`${PREFABS.error}Expected a key argument only.${STYLE.reset_all}`);
-        term.writeln(`Try '2fa -h' for more information.${STYLE.reset_all}`);
-        return 1;
-    }
-
-    const key = args[0].toUpperCase();
+    term.writeln("Please paste your Base32 encoded key to generate a code for. Case insensitive:");
+    const key = (await term.get_text()).toUpperCase();
 
     let totp: number;
     let generated_at: Date;
