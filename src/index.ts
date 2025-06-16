@@ -132,20 +132,20 @@ export default {
         },
         "Arguments:": {
             "-h": "Displays this help message.",
-            "For now": {
+            "For now:": {
                 "key": "Base32 encoded key to generate a code for. Case insensitive."
             },
-            "For add": {
+            "For add:": {
                 "label": "Label to store the key under. Should be unique. Spaces are not allowed. Case sensitive.", // TODO: support quotes, might need to modify terminal to do this but can bodge with args joining
                 "key": "Base32 encoded key to store. Case insensitive."
             },
-            "For remove": {
+            "For remove:": {
                 "label": "Label of the key to remove. Case sensitive."
             },
-            "For get": {
+            "For get:": {
                 "label": "Label of the key to generate a code for. Case sensitive."
             },
-            "For list": {
+            "For list:": {
                 "-k": "Show the keys alongside their labels."
             }
         }
