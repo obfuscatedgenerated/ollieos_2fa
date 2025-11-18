@@ -46,6 +46,7 @@ const base32_decode = (base32: string) => {
         while (bit_count >= 8) {
             view.setUint8(offset++, bits >> (bit_count - 8));
             bit_count -= 8;
+            bits = bits & ((1 << bit_count) - 1);
         }
     }
 

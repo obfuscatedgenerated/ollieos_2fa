@@ -1,11 +1,12 @@
 {
   "name": "2fa",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "TOTP codes in OllieOS. Don't use this for anything serious.",
   "main": "./src/index.ts",
   "scripts": {
     "build": "webpack --mode=production",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch --mode=development",
+    "dev": "concurrently \"npm:watch\" \"npx ollieos-pkg-serve\""
   },
   "author": "obfuscatedgenerated",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "ollieos": "github:obfuscatedgenerated/obfuscatedgenerated.github.io"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "ollieos_pkgbuild": "github:obfuscatedgenerated/ollieos_pkgbuild",
     "webpack-cli": "^5.1.4"
   },

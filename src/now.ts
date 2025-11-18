@@ -15,6 +15,12 @@ export const now_subcommand = async (data: ProgramMainData) => {
 
     term.writeln("Please paste your Base32 encoded key to generate a code for. Case insensitive:");
     const key = (await term.get_text()).toUpperCase();
+    term.writeln(NEWLINE);
+
+    if (!key || key.length === 0) {
+        term.writeln(`${PREFABS.error}No key provided.${STYLE.reset_all}`);
+        return 1;
+    }
 
     let totp: number;
     let generated_at: Date;
