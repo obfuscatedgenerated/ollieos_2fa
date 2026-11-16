@@ -154,8 +154,8 @@ export default {
         // TODO: option to specify number of digits, store in key file if applicable
 
         // extract from data to make code less verbose
-        const {args, term} = data;
-        const fs = term.get_fs();
+        const {args, term, kernel, shell} = data;
+        const fs = kernel.get_fs();
 
         if (args.length === 0) {
             term.writeln(`${PREFABS.error}Missing subcommand.`)
@@ -164,8 +164,10 @@ export default {
         }
 
         if (args.includes("-h")) {
-            term.execute("help 2fa");
-            return 0;
+            const spawn_result = await kernel.spawn("help", ["ls"], shell);
+            const exit_code = await spawn_result.completion;
+            spawn_result.process.kill(exit_code);
+            return exit_code;
         }
 
         // create /var/lib/2fa if it doesn't exist so subcommands don't have to check
@@ -190,4 +192,4 @@ export default {
                 return 1;
         }
     }
-} as Program;
+} satisfies Program;
