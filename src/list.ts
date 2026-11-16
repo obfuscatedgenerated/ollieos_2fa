@@ -1,5 +1,5 @@
-import {ANSI, NEWLINE} from "ollieos/src/term_ctl";
-import {ProgramMainData} from "ollieos/src/types"
+import {ANSI, NEWLINE} from "ollieos/lib/ansi";
+import {ProgramMainData} from "ollieos/types";
 
 import {KEY_DIR} from ".";
 
@@ -8,7 +8,7 @@ const {STYLE, PREFABS, FG} = ANSI;
 
 export const list_subcommand = async (data: ProgramMainData) => {
     // extract from data to make code less verbose
-    const {args, term} = data;
+    const {args, term, kernel} = data;
 
     // remove subcommand name
     args.shift();
@@ -16,7 +16,7 @@ export const list_subcommand = async (data: ProgramMainData) => {
     if ("-k" in args) {
     }
 
-    const fs = term.get_fs();
+    const fs = kernel.get_fs();
 
     term.writeln("not implemented yet.")
 

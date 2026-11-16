@@ -1,5 +1,5 @@
-import type { Program } from "ollieos/src/types";
-import { ANSI } from "ollieos/src/term_ctl";
+import type { Program } from "ollieos/types";
+import {ANSI} from "ollieos/lib/ansi";
 
 import {add_subcommand} from "./add";
 import {remove_subcommand} from "./remove";
@@ -123,6 +123,7 @@ export default {
     name: "2fa",
     description: "TOTP code generator and storage. Do not use this on anything serious!",
     usage_suffix: "[-h] [subcommand] [arguments]",
+    compat: "3.0.0",
     arg_descriptions: {
         "Subcommands:": {
             "now": `Generates a code given a key once off: ${PREFABS.program_name}2fa${STYLE.reset_all + STYLE.italic} now${STYLE.reset_all}`,

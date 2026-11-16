@@ -1,5 +1,5 @@
-import {ANSI, NEWLINE} from "ollieos/src/term_ctl";
-import {ProgramMainData} from "ollieos/src/types"
+import {ANSI, NEWLINE} from "ollieos/lib/ansi";
+import {ProgramMainData} from "ollieos/types";
 
 import {generate_totp, get_lifetime_remaining_seconds, TOTP_DIGITS} from ".";
 
